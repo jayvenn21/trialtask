@@ -1,0 +1,9 @@
+Django
+requests
+pandas
+scikit-learn
+matplotlib
+reportlab
+gunicorn
+psycopg2-binary
+joblib

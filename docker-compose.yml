@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: gunicorn financial_backtester.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=financial_backtester
+      - POSTGRES_USER=your_username
+      - POSTGRES_PASSWORD=your_password
+
+volumes:
+  postgres_data:
